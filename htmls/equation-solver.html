@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Equation Solver</title>
+
+    <link rel="stylesheet" href="..\styles\style.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+
+    <title class="title">Equation  Solver</title>
+
+    <!--NAV BAR FOR PAGES -->
+    
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <a class="btn btn-ghost normal-case text-xl">CALC - PY</a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="home.html" class = "mx-4"> Home </a></li>
+          <li><a href = "base-n.html" class = "mx-4"> Base - N</a></li>
+          <li><a href = "#" class = "active mx-4"> Equation Solver </a></li>
+          <li><a href = "matrix.html" class = "mx-4"> Matrix </a></li>
+          <li><a href = "2d-graphing.html" class = "mx-4"> 2D - Graphing </a></li>
+          <li><a href = "#" class = "mx-4"> 3D - Graphing </a></li>
+          <li><a href = "statistics.html" class = "mx-4"> Statistics </a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a class="btn mx-5 px-8">
+          <span class = "pr-2">Github</span>
+          <i class='bx bxl-github' ></i>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!--NAV BAR ENDS -->
+
+    <!--MAIN BODY STARTS -->
+    <div class="main-section">
+
+        <div class="calc-container h-screen ">
+  
+          
+            <div class=" mockup-window border bg-base-300 top-1/4 h-auto mx-20">
+                <div class=" px-4 py-4 bg-base-200">
+
+
+                    <div class="grid grid-cols-2 gap-x-20 h-full">
+
+                        <div class="first-col col-span-1">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Simultaneous Equations</h3>
+                            <div class="divider mt-2"></div> 
+                            
+                        </div>
+
+                        <div class="sec-col col-span-1">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Polynomial Equations</h3>
+                            <div class="divider mt-2"></div> 
+
+                        </div>
+
+                        <div class="simul-eq col-span-1">
+                            <div class="flex ml-8">
+                                <div class="flex items-center mr-4">
+                                    <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">1-val</label>
+                                </div>
+                                
+                                <div class="flex items-center mr-4">
+                                    <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">2-val</label>
+                                </div>
+
+                                <div class="flex items-center mr-4">
+                                    <input checked id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-checked-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">3-val</label>
+                                </div>
+
+                                <div class="flex items-center mr-4">
+                                    <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">4-val</label>
+                                </div>
+                                
+                            </div>
+
+                            <div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full mt-5">
+                                <div class="grid grid-cols-2 gap-x-4">
+                                    <div class="grid grid-rows-3 gap-y-3">
+
+                                        <div class="first-eq ">
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" /> 
+                                            <span class="text-xl variable">x</span>
+                                            <span class="text-xl">+</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            <span class="text-xl variable">y</span>
+                                            <span class="text-xl">+</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            <span class="text-xl variable">z</span>
+                                            <span class="text-xl">=</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            
+                                        </div>
+    
+                                        <div class="second-eq">
+    
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" /> 
+                                                <span class="text-xl variable">x</span>
+                                                <span class="text-xl">+</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                                <span class="text-xl variable">y</span>
+                                                <span class="text-xl">+</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                                <span class="text-xl variable">z</span>
+                                                <span class="text-xl">=</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+    
+                                        </div>
+    
+                                        <div class="third-eq">
+    
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" /> 
+                                                <span class="text-xl variable">x</span>
+                                                <span class="text-xl">+</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                                <span class="text-xl variable">y</span>
+                                                <span class="text-xl">+</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                                <span class="text-xl variable">z</span>
+                                                <span class="text-xl">=</span>
+                                                <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                        </div>
+    
+                                        <!--calculate button-->
+                                        <div class="space grid mt-4">
+                                            <div class="calculate-btn m-auto">
+                                                <button class="btn btn-primary btn-sm">Calculate</button>
+                                            </div>
+                                        </div>
+                                        
+    
+                                    </div>
+
+                                    <div class="answers">
+                                        <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid">
+                                            <div class="values m-auto">
+                                                <span>
+                                                    <span class="text-xl variable">x</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">1</span>
+                                                </span>
+                                                <br>
+                                                <span>
+                                                    <span class="text-xl variable">y</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">2</span>
+                                                </span>
+                                                <br>
+                                                <span>
+                                                    <span class="text-xl variable">z</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">3</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="poly-eq col-span-1">
+
+
+                            <div class="flex ml-8">
+                                <div class="flex items-center mr-4">
+                                    <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">2ⁿᵈ - degree</label>
+                                </div>
+                                
+                                <div class="flex items-center mr-4">
+                                    <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-2-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">3ʳᵈ - degree</label>
+                                </div>
+
+                                <div class="flex items-center mr-4">
+                                    <input checked id="inline-checked-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="inline-checked-radio" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">4ᵗʰ - degree </label>
+                                </div>
+
+                                
+                                
+                            </div>
+
+                            <div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 w-full mt-5 ">
+                                <div class="grid grid-cols-3 gap-x-4 mb-12">
+                                    
+                                    <div class="grid grid-rows-2 col-span-2 mt-6">
+
+                                        <div class="third-eq">
+    
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" /> 
+                                            <span class="text-xl variable">x³</span>
+                                            <span class="text-xl">+</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            <span class="text-xl variable">x²</span>
+                                            <span class="text-xl">+</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            <span class="text-xl variable">x</span>
+                                            <span class="text-xl">+</span>
+                                            <input type="text" placeholder="" class="input input-bordered input-sm w-12" />
+                                            <span class="text-xl variable">=</span>
+                                            <span class = "text-xl">0</span>
+                                        </div>
+
+                                        <!--calculate button-->
+                                        <div class="space grid mt-4">
+                                            <div class="calculate-btn m-auto">
+                                                <button class="btn btn-primary btn-sm">Calculate</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+    
+                                    
+                                        
+    
+                                    
+
+                                    <div class="answers w-40 col-span-1">
+                                        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 grid">
+                                            <div class="values m-auto">
+                                                <span>
+                                                    <span class="text-xl variable">x</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">1</span>
+                                                </span>
+                                                <br>
+                                                <span>
+                                                    <span class="text-xl variable">x</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">2</span>
+                                                </span>
+                                                <br>
+                                                <span>
+                                                    <span class="text-xl variable">x</span>
+                                                    <span class="text-xl">=</span>
+                                                    <span class="text-xl">3</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+
+                        </div>
+
+                     </div>
+
+                </div>
+              </div>
+
+            
+
+
+        </div>
+    </div>
+    
+    
+    
+    
+
+    <script src="../javas/java.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+  </body>
+
+</html>
+
+
+<!--
+    <div class="columns-2 gap-20 w-9xl">
+
+                        <div class="first-col">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Simultaneous Equations</h3>
+                            <div class="divider mt-2"></div> 
+
+                            
+                            <label for="val-count" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+                            <select id="val-count" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Choose variable count. </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="sec-col">
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Polynomial Equations</h3>
+                            <div class="divider mt-2"></div> 
+                            
+
+
+                        </div>
+
+     </div>
+-->

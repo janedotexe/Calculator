@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2D - Graphing</title>
+
+    <link rel="stylesheet" href="..\styles\style.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    
+
+    <script>
+
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+
+    <title class="title">2D - Graphing</title>
+
+    <!--NAV BAR FOR PAGES -->
+    
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <a class="btn btn-ghost normal-case text-xl">CALC - PY</a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="home.html" class = "mx-4"> Home </a></li>
+          <li><a href = "base-n.html" class = "mx-4"> Base - N</a></li>
+          <li><a href = "#" class = "mx-4"> Equation Solver </a></li>
+          <li><a href = "matrix" class = "mx-4"> Matrix </a></li>
+          <li><a href = "2d-graphing.html" class = "active mx-4"> 2D - Graphing </a></li>
+          <li><a href = "#" class = "mx-4"> 3D - Graphing </a></li>
+          <li><a href = "statistics.html" class = "mx-4"> Statistics </a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a class="btn mx-5 px-8">
+          <span class = "pr-2">Github</span>
+          <i class='bx bxl-github' ></i>
+          </span>
+
+        </a>
+      </div>
+    </div>
+
+    <!--NAV BAR ENDS -->
+
+    <!--MAIN BODY STARTS -->
+    <div class="main-section">
+
+      <div class="calc-container h-full w-full">
+
+          <!--
+            <div class="mockup-window border border-base-30 m-auto h-full w-full outline-none">
+          <div class=" border-t h-full w-ful flex justify-center align-center">
+
+            
+
+          </div>
+        </div>
+          -->
+        
+
+          <div class="mockup-window border border-base-300 h-full rounded-none">
+            <div class="flex justify-center align-center border-base-300 border-t h-full w-full">
+              
+              <div id="calculator" style = "height: 98%; width: 100%;"></div>
+
+            </div>
+          </div>
+
+      </div>
+
+
+    </div>
+    
+    
+    
+
+    <script src="https://www.desmos.com/api/v1.7/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <script src="../javas/java.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </body>

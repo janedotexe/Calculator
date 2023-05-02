@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrix</title>
+
+    <link rel="stylesheet" href="..\styles\style.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+
+    <title class="title">Matrix</title>
+
+    <!--NAV BAR FOR PAGES -->
+    
+    <div class="navbar bg-base-100">
+      <div class="navbar-start">
+        <a class="btn btn-ghost normal-case text-xl">CALC - PY</a>
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li><a href="home.html" class = "mx-4"> Home </a></li>
+          <li><a href = "base-n.html" class = "mx-4"> Base - N</a></li>
+          <li><a href = "#" class = "mx-4"> Equation Solver </a></li>
+          <li><a href = "matrix" class = "active mx-4"> Matrix </a></li>
+          <li><a href = "2d-graphing.html" class = "mx-4"> 2D - Graphing </a></li>
+          <li><a href = "#" class = "mx-4"> 3D - Graphing </a></li>
+          <li><a href = "statistics.html" class = "mx-4"> Statistics </a></li>
+        </ul>
+      </div>
+      <div class="navbar-end">
+        <a class="btn mx-5 px-8">
+          <span class = "pr-2">Github</span>
+          <i class='bx bxl-github' ></i>
+          </span>
+
+        </a>
+      </div>
+    </div>
+
+    <!--NAV BAR ENDS -->
+
+    <!--MAIN BODY STARTS -->
+    <div class="main-section">
+
+        <div class="calc-container h-full w-full">
+
+        
+          
+        
+
+            <div class="mockup-window border border-base-300 h-full rounded-none">
+                <div class="flex justify-center align-center border-base-300 border-t h-full w-full">
+                    
+                    <div class="matrix flex place-items-center">
+
+                        <div class="grid grid-cols-11 gap-20">
+
+                            <div class="first-matrix col-span-3  mt-5" >
+    
+                                <div class="max-w-sm p-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    
+                                    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                        <div class="font-semibold text-gray-900 dark:text-white flex align-center">
+                                            <!--ask for size-->
+                                            <span class = "mr-2 mt-1" id = "m1-size">Size: </span>
+                                            <!--input box small size-->
+                                                <input type="text" id="row-1" class="block mr-2 w-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <input type="text" id="col-1" class="block w-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <button type="button" id = "generate-btn-1" class=" px-5 mx-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><i class='bx bx-cog' ></i></button>
+                                                
+                                                <!--popover button-->
+                                                <div class="info-buttons mr-0 ml-auto">
+                                                
+                                                    <div class="inline-flex rounded-md shadow-sm" role="group">
+
+                                                        <button id = "mat1-det-btn" data-popover-target="popover-click-mat1-determinant" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> D </button>
+                                                        <div data-popover id="popover-click-mat1-determinant" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Determinant</h3>
+                                                            </div>
+                                                            <div id = "mat1-det" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div>  
+    
+    
+                                                        <button id = "mat1-tra-btn" data-popover-target="popover-click-mat1-transpose" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> T </button>
+                                                        <div data-popover id="popover-click-mat1-transpose" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Transpose</h3>
+                                                            </div>
+                                                            <div id = "mat1-tra" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div>  
+    
+                                                        <button id = "mat1-inv-btn" data-popover-target="popover-click-mat1-inverse" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> I </button>
+                                                        <div data-popover id="popover-click-mat1-inverse" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Inverse</h3>
+                                                            </div>
+                                                            <div id = "mat1-inv" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div> 
+                                                    </div>
+                                                    
+                                                </div> 
+
+                                        </div>
+                                    </div>
+
+                                    <!--matrix generated-->
+
+                                    <div class="generated-matrix flex justify-center align-center" id = "matrix-generation-box-1">
+                                        
+                                    </div>
+
+
+                                </div>       
+    
+    
+                            </div>
+    
+                            <div class="operator-col col-span-1 mt-3">
+                                <!--select box-->
+                                <label for="operators" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Operator :</label>
+                                <select id="operators" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="plus">+</option>
+                                <option value="minus">-</option>
+                                <option value="multiply">x</option>
+                                </select>
+                            </div>
+    
+                            <div class="second-matrix col-span-3 mt-5">
+    
+                                <div class="max-w-sm p-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    
+                                    <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                        <div class="font-semibold text-gray-900 dark:text-white flex align-center">
+                                            <!--ask for size-->
+                                            <span class = "mr-2 mt-1">Size: </span>
+                                            <!--input box small size-->
+                                                <input type="text" id = "row-2" class="block mr-2 w-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <input type="text" id = "col-2" class="block w-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                <button type="button" id = "generate-btn-2" class=" px-5 mx-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><i class='bx bx-cog' ></i></button>
+                                                
+                                                <!--pop over button-->
+                                                <div class="info-buttons mr-0 ml-auto">
+                                                
+                                                    <div class="inline-flex rounded-md shadow-sm" role="group">
+
+                                                        <button id = "mat2-det-btn" data-popover-target="popover-click-mat2-determinant" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> D </button>
+                                                        <div data-popover id="popover-click-mat2-determinant" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Determinant</h3>
+                                                            </div>
+                                                            <div id = "mat2-det" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div>  
+    
+    
+                                                        <button id = "mat2-tra-btn" data-popover-target="popover-click-mat2-transpose" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> T </button>
+                                                        <div data-popover id="popover-click-mat2-transpose" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Transpose</h3>
+                                                            </div>
+                                                            <div id = "mat2-tra" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div>  
+    
+                                                        <button id = "mat2-inv-btn" data-popover-target="popover-click-mat2-inverse" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> I </button>
+                                                        <div data-popover id="popover-click-mat2-inverse" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                            <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                                <h3 class="font-semibold text-gray-900 dark:text-white">Inverse</h3>
+                                                            </div>
+                                                            <div id = "mat2-inv" class="px-3 py-2 flex align-center justify-center">
+                                                                
+                                                            </div>
+                                                            <div data-popper-arrow></div>
+                                                        </div> 
+                                                    </div>
+                                                    
+    
+    
+                                                </div> 
+                                        </div>
+                                    </div>
+
+                                    <!--matrix generated-->
+
+                                    <div class="generated-matrix flex justify-center align-center" id = "matrix-generation-box-2" >
+                                        
+                                    </div>
+
+
+                                </div>        
+    
+                            </div>
+    
+                            <div class="equals-column col-span-1 grid mt-6">
+                                <button type="button" id = "equals-btn" class="h-10 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">=</button>
+                            </div>
+    
+                            <div class="answer-col col-span-3 mt-5">
+                                
+                                <div class="max-w-sm p-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                    
+                                    <div class="px-3 py-2 h-13 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                        <div class="font-semibold text-gray-900 dark:text-white flex align-center mr-0">
+                                            <span class = "mt-2">Answer: </span>    
+                                            <!--popover buttons -->
+                                            <div class="info-buttons mr-0 ml-auto">
+                                                
+                                                <div class="inline-flex rounded-md shadow-sm" role="group">
+
+                                                    <button id = "ans-det-btn" data-popover-target="popover-click-answer-determinant" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> D </button>
+                                                    <div data-popover id="popover-click-answer-determinant" role="tooltip" class="absolute z-10 invisible inline-block w-50 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                            <h3 class="font-semibold text-gray-900 dark:text-white">Determinant</h3>
+                                                        </div>
+                                                        <div id = "ans-det" class="px-3 py-2 flex align-center justify-center">
+                                                            
+                                                        </div>
+                                                        <div data-popper-arrow></div>
+                                                    </div>  
+
+
+                                                    <button id = "ans-tra-btn" data-popover-target="popover-click-answer-transpose" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> T </button>
+                                                    <div data-popover id="popover-click-answer-transpose" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                            <h3 class="font-semibold text-gray-900 dark:text-white">Transpose</h3>
+                                                        </div>
+                                                        <div id = "ans-tra" class="px-3 py-2 flex align-center justify-center">
+                                                            
+                                                        </div>
+                                                        <div data-popper-arrow></div>
+                                                    </div>  
+
+                                                    <button id = "ans-inv-btn" data-popover-target="popover-click-answer-inverse" data-popover-trigger="click" type="button" class="px-4 py-2 text-sm font-medium text-gray-900 bg-gray-400 border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"> I </button>
+                                                    <div data-popover id="popover-click-answer-inverse" role="tooltip" class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
+                                                        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                                            <h3 class="font-semibold text-gray-900 dark:text-white">Inverse</h3>
+                                                        </div>
+                                                        <div id = "ans-inv" class="px-3 py-2 flex align-center justify-center">
+                                                            
+                                                        </div>
+                                                        <div data-popper-arrow></div>
+                                                    </div> 
+                                                </div>
+                                                
+
+
+                                            </div> 
+                                            
+
+                                            
+                                    </div>
+
+                                    <!--matrix generated-->
+
+                                    <div class="generated-matrix flex justify-center align-center" id = "answer-generation-box">
+                                        
+                                    </div>
+
+
+                                </div>        
+                                    
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="test-div">
+        <!--mathjax tests-->
+    </div>
+    
+    
+
+    <script src="../javas/java.js"></script>
+    <script src = "../javas/matrix.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Set column spacing to 10 pixels -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "HTML-CSS": {
+                mtableColumnSpacing: "20px"
+            }
+        });
+    </script>
+
+
+  </body>
