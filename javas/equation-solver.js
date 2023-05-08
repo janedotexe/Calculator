@@ -14,7 +14,6 @@ let simul_radio_btns = document.querySelectorAll("input[name = 'simul-inline-rad
 let generate_simul_form = () => {
     let simul_selected = document.querySelector("input[name = 'simul-inline-radio-group']:checked");
     let val = simul_selected.value;
-    console.log(val);
 
     // generate the appropriate form
 
@@ -309,7 +308,6 @@ simul_calc_btn.addEventListener('click', function() {
 
     // get the value of the variable number
     let simul_var_num = document.querySelector("input[name = 'simul-inline-radio-group']:checked").value;
-    console.log(simul_var_num);
 
     if (simul_var_num == '1-val'){
 
@@ -647,7 +645,7 @@ let generate_poly_form = () => {
                         <span>\
                             <span class="text-base variable">x</span>\
                             <span class="text-base">=</span>\
-                            <span class="text-base" id = "deg-4-x3">0</span>\
+                            <span class="text-base" id = "deg-4-x2">0</span>\
                         </span>\
                         <br>\
                         <span>\
@@ -659,7 +657,7 @@ let generate_poly_form = () => {
                         <span>\
                             <span class="text-base variable">x</span>\
                             <span class="text-base">=</span>\
-                            <span class="text-base" id = "deg-4-x3">0</span>\
+                            <span class="text-base" id = "deg-4-x4">0</span>\
                         </span>\
                     </div>\
                 </div>';
@@ -751,7 +749,6 @@ poly_solve_btn.addEventListener('click', function() {
 
     // get the selected polynomial degree
     let poly_selected = document.querySelector('input[name="poly-inline-radio-group"]:checked').value;
-    console.log(poly_selected);
 
     if (poly_selected == '2-deg'){
         // get the values of the input fields
