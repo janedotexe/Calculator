@@ -853,6 +853,7 @@ poly_solve_btn.addEventListener('click', function() {
 
         // calculate the roots
         let root = nerdamer.solve('a*x^4 + b*x^3 + c*x^2 + d*x + e = 0', 'x');
+        console.log(root);
 
         // root is an array
         root = root.toString();
