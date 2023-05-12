@@ -1,56 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Power Input Example</title>
-  <style>
-    .input {
-      position: relative;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      padding: 2px 4px;
-      font-size: 16px;
+<div style ="height: 500px; width: 500px; ">
+  <canvas id="myChart" style = "height: 100%; width: 100%;"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type = "text/javascript" src="https://unpkg.com/@sgratzl/chartjs-chart-boxplot@3.6.0/build/index.umd.min.js"></script>
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  let x = 1; 
+  let min = 2;
+  let max = 10; 
+  let median = 5;
+  let q1 = 3;
+  let q3 = 7;
+  
+
+  new Chart(ctx, {
+    type: 'boxplot',
+    data: {
+      labels: ['', 'Data', '', '', '', ''],
+      datasets: [{
+        label: '# of Votes',
+        outlierColor: '#999999',
+        data: [{
+            x: x,
+            min: min,
+            max: max,
+            median: median,
+            q1: q1,
+            q3: q3
+          }],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
     }
-
-    .base {
-      display: inline-block;
-      vertical-align: middle;
-      width: calc(100% - 24px);
-    }
-
-    .superscript {
-      position: absolute;
-      right: 2px;
-      top: -12px;
-      display: inline-block;
-      vertical-align: top;
-      font-size: 12px;
-      width: 20px;
-      text-align: center;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-  <div class="input">
-    <div class="base" contenteditable></div>
-    <div class="superscript" contenteditable></div>
-  </div>
-
-  <script>
-    const baseInput = document.querySelector('.input .base');
-    const superscriptInput = document.querySelector('.input .superscript');
-
-    function combineInputs() {
-      const baseText = baseInput.innerText;
-      const superscriptText = superscriptInput.innerText;
-      const combinedText = `${baseText}^(${superscriptText})`;
-      console.log(combinedText);
-    }
-
-    baseInput.addEventListener('input', combineInputs);
-    superscriptInput.addEventListener('input', combineInputs);
-  </script>
-</body>
-</html>
+  });
+</script>
