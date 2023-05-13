@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>3D - Graphing</title>
+    <link rel="stylesheet" href="../styles/3d-css/materialize.css" />
+    <link rel="stylesheet" href="../styles/3d-css/mathquill.css" />
+    <link rel="stylesheet" href="../styles/3d-css/style.css" />
+    <link rel="stylesheet" href="../styles/3d-css/icomoon-soc-icons.css" />
 
+    
     <link rel="stylesheet" href="..\styles\style.css" />
 
     <link
@@ -22,125 +27,105 @@
       type="text/css"
     />
 
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  
 
-    <script>
-
-    </script>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Free 3D grapher from Mathpix: interactive 3D grapher for math equations"
+    />
+    <script
+      type="text/javascript"
+      src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=nbetQUh-P03x__aO53aKjOVFHMuFv0dj5Vk3goT7k7foN4_HqTZX9lrad0P25iHU"
+      charset="UTF-8"
+    ></script>
   </head>
 
-  <body>
+  <body class = "overflow-hidden">
 
-    <title class="title">3D - Graphing</title>
-
-    <!--NAV BAR FOR PAGES -->
-    
     <div class="navbar bg-base-100">
-      <div class="navbar-start">
-        <a class="btn btn-ghost normal-case text-xl">CALC - PY</a>
-      </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="home.html" class = "mx-4"> Home </a></li>
-          <li><a href = "equation-solver.html" class = "mx-4"> Equation Solver </a></li>
-          <li><a href = "matrix.html" class = "mx-4"> Matrix </a></li>
-          <li><a href = "2d-graphing.html" class = "mx-4"> 2D - Graphing </a></li>
-          <li><a href = "3d-graphing.html" class = "active mx-4"> 3D - Graphing </a></li>
-          <li><a href = "statistics.html" class = "mx-4"> Statistics </a></li>
-          <li><a href = "unit-conversion.html" class = "mx-4"> Unit Converter</a></li>
-        </ul>
-      </div>
-      <div class="navbar-end">
-        <a class="btn mx-5 px-8">
-          <span class = "pr-2">Github</span>
-          <i class='bx bxl-github' ></i>
-          </span>
-
-        </a>
-      </div>
-    </div>
-
-    <!--NAV BAR ENDS -->
-
-    <!--MAIN BODY STARTS -->
-    <div class="main-section">
-
-      <div class="calc-container h-full w-full">
-
-          <!--
-            <div class="mockup-window border border-base-30 m-auto h-full w-full outline-none">
-          <div class=" border-t h-full w-ful flex justify-center align-center">
-
-            
-
-          </div>
+        <div class="navbar-start">
+          <a class="btn btn-ghost normal-case text-xl">CALC - PY</a>
         </div>
-          -->
-        
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+              <li><a href="home.html" class = "mx-4"> Home </a></li>
+              <li><a href = "equation-solver.html" class = "mx-4"> Equation Solver </a></li>
+              <li><a href = "matrix.html" class = "mx-4"> Matrix </a></li>
+              <li><a href = "2d-graphing.html" class = "mx-4"> 2D - Graphing </a></li>
+              <li><a href = "3d-graphing.html" class = "active mx-4"> 3D - Graphing </a></li>
+              <li><a href = "statistics.html" class = "mx-4"> Statistics </a></li>
+              <li><a href = "unit-conversion.html" class = "mx-4"> Unit Converter</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+          <a class="btn mx-5 px-8">
+            <span class = "pr-2">Github</span>
+            <i class='bx bxl-github' ></i>
+            </span>
+  
+          </a>
+        </div>
+      </div>
 
-          <div class="mockup-window border border-base-300 h-full rounded-none">
-            <div class="border-base-300 border-t h-full w-full pb-12">
-              
-              <!-- two columns | one for the input functions | other for the graphing area | ratio : 3 to 7 -->
 
-              <div class="grid grid-cols-4 gap-3 h-full mr-2 pr-2">
+      <div class="mockup-window border border-base-300 h-full rounded-none">
+        <div class="border-base-300 border-t h-full w-full">
 
-                <div class="first-col col-span-1">
-                    <!--window for functions -->
-
-
-                        <div class="relative w-full p-0 bg-white border border-gray-200 shadow pb-5 dark:bg-gray-800 dark:border-gray-700 h-full m-2 rounded-lg shadow-lg">
-
-                            <div class="flex px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Functions: </h3>
-                                <!-- window adder button -->
-                                <button type="button" onclick = "add_func_window()" id = "add-func-btn" class="px-3 py-2 text-xs mr-0 ml-auto font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">+ 🪟</button>                            
-                            </div>
-
-                            <div id="functions-list">
-
-                                <div id = "function-1" class="flex my-1 ">
-                                    <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-                                        <input checked id="func1-box" type="checkbox" value="" class="func-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    </span>
-                                    <input type="text" id="func-1" class="rounded-none bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <button type="button" onclick ="" class="inline-flex items-center px-4 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-0 rounded-r-lg text-sm dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">x</button>
-                                </div>
-
-                            </div>
-                        
-                        </div>
-
-                </div>
-
-                <div class="second-col col-span-3">
-                    
-                    <div class="relative w-full p-0 bg-white border border-gray-200 shadow pb-5 dark:bg-gray-800 dark:border-gray-700 h-full m-2  rounded-lg shadow-lg">
-                        
-                        <div id = "canvas" class="canvas w-full h-full">
-                            <!--here lies the graph-->
-                        </div>
+            <div id = "grapher" class="row">
+                <div class="eqs-col col s4 " id="eq-sidebar"></div>
+          
+                <div
+                  class="black graph-col col s8"
+                  style="height: 100%; position: relative"
+                >
+                  <div id="ThreeJS"></div>
+                  <div id="ThreeJS-axes"></div>
+                  <div id="controls-container" class="teal"></div>
+                  <div id="trace-info-container" style="display: none">Trace: None</div>
+          
+                  <div id="progress-info-container" style="opacity: 0">
+                    <div style="position: absolute; left: 50%">
+                      <span>LOADING</span>
                     </div>
+                    <div class="progress-bar"></div>
+                  </div>
                 </div>
               </div>
-
-            </div>
-          </div>
-
-      </div>
-
-
+        </div>
     </div>
     
-    
-    
-    <script src="../javas/3d-graphing.js"></script>
-    <script src="../javas/java.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    <!-- core -->
+    <script src="../javas/3d-graphing.js"></script>
+
+    <!-- analytics -->
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", "UA-85994512-1", "auto");
+      ga("send", "pageview");
+    </script>
   </body>
+</html>
