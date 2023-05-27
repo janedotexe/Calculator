@@ -214,7 +214,6 @@ compute_btn.addEventListener("click", function () {
       },
     });
 
-    let x = 1;
     let min = minimum;
     let max = maximum;
     let median = mediann;
