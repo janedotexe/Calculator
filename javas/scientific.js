@@ -10,40 +10,67 @@ function replace_str(string) {
   new_string = new_string.replace(/\\/g, "");
 
   // if there's sin(x), change it to Math.sin(x)
-  new_string = new_string.replace(/sin\((.+?)\)/g, "Math.sin($1)");
+  new_string = new_string.replace(
+    /sin\((.+?)\)/g,
+    "Math.sin(($1 * Math.PI) / 180)"
+  );
 
   // if there's cos(x), change it to Math.cos(x)
-  new_string = new_string.replace(/cos\((.+?)\)/g, "Math.cos($1)");
+  new_string = new_string.replace(
+    /cos\((.+?)\)/g,
+    "Math.cos(($1 * Math.PI) / 180)"
+  );
 
   // if there's tan(x), change it to Math.tan(x)
-  new_string = new_string.replace(/tan\((.+?)\)/g, "Math.tan($1)");
+  new_string = new_string.replace(
+    /tan\((.+?)\)/g,
+    "Math.tan(($1 * Math.PI) / 180)"
+  );
 
   // if there's cot(x), change it to Math.cot(x)
-  new_string = new_string.replace(/cot\((.+?)\)/g, "cot($1)");
+  new_string = new_string.replace(/cot\((.+?)\)/g, "cot(($1 * Math.PI) / 180)");
 
   // if there's sec(x), change it to Math.sec(x)
-  new_string = new_string.replace(/sec\((.+?)\)/g, "sec($1)");
+  new_string = new_string.replace(/sec\((.+?)\)/g, "sec(($1 * Math.PI) / 180)");
 
   // if there's csc(x), change it to Math.csc(x)
-  new_string = new_string.replace(/csc\((.+?)\)/g, "csc($1)");
+  new_string = new_string.replace(/csc\((.+?)\)/g, "csc(($1 * Math.PI) / 180)");
 
   // if there's a sin^{-1}(x), change it to asin(x)
-  new_string = new_string.replace(/sin\^{-1}\((.+?)\)/g, "Math.asin($1)");
+  new_string = new_string.replace(
+    /sin\^{-1}\((.+?)\)/g,
+    "Math.asin(($1 * Math.PI) / 180)"
+  );
 
   // if there's a cos^{-1}(x), change it to acos(x)
-  new_string = new_string.replace(/cos\^{-1}\((.+?)\)/g, "Math.acos($1)");
+  new_string = new_string.replace(
+    /cos\^{-1}\((.+?)\)/g,
+    "Math.acos(($1 * Math.PI) / 180)"
+  );
 
   // if there's a tan^{-1}(x), change it to atan(x)
-  new_string = new_string.replace(/tan\^{-1}\((.+?)\)/g, "Math.atan($1)");
+  new_string = new_string.replace(
+    /tan\^{-1}\((.+?)\)/g,
+    "Math.atan(($1 * Math.PI) / 180)"
+  );
 
   // if there's a cot^{-1}(x), change it to acot(x)
-  new_string = new_string.replace(/cot\^{-1}\((.+?)\)/g, "acot($1)");
+  new_string = new_string.replace(
+    /cot\^{-1}\((.+?)\)/g,
+    "acot(($1 * Math.PI) / 180)"
+  );
 
   // if there's a sec^{-1}(x), change it to asec(x)
-  new_string = new_string.replace(/sec\^{-1}\((.+?)\)/g, "asec($1)");
+  new_string = new_string.replace(
+    /sec\^{-1}\((.+?)\)/g,
+    "asec(($1 * Math.PI) / 180)"
+  );
 
   // if there's a csc^{-1}(x), change it to acsc(x)
-  new_string = new_string.replace(/csc\^{-1}\((.+?)\)/g, "acsc($1)");
+  new_string = new_string.replace(
+    /csc\^{-1}\((.+?)\)/g,
+    "acsc(($1 * Math.PI) / 180)"
+  );
 
   // replace the ^ with the **
   new_string = new_string.replace(/\^/g, "**");
@@ -133,6 +160,7 @@ function evaluate(mathField) {
   let result = 0;
 
   let latex = mathField.latex();
+
   if (latex == "") {
     return "";
   }
