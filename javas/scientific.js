@@ -205,6 +205,39 @@ let mathField_1 = MQ.MathField(mathFieldSpan_1, {
 });
 mathFields.push(mathField_1);
 
+// this is the active input box
+let active_input_box = "";
+
+// throw id function
+function throw_id() {
+  let div = event.target.parentNode;
+
+  let div_id = div.id;
+
+  let input_box = "";
+
+  // if the div_id contains "input-box", then get its children
+  if (div_id.includes("input-row")) {
+    let spans = div.children;
+    input_box = spans[1].id;
+  } else {
+    input_box = div_id;
+  }
+
+  active_input_box = input_box;
+  return;
+}
+
+// add something to tthe math field in the active input box
+function add_to_math_field(value) {
+  // get the last number in the active_input_box
+  let lastnum = active_input_box.slice(-1);
+
+  // the mathfield is in the lastnum index-1 of the mathFields array
+  let mathField = mathFields[lastnum - 1];
+  mathField.write(value);
+}
+
 // input add remove for home
 
 function add_window() {
@@ -330,39 +363,6 @@ let percentage_btn = document.getElementById("percentage-btn");
 let clear_btn = document.getElementById("clear-btn");
 let ac_btn = document.getElementById("ac-btn");
 let enter_btn = document.getElementById("enter-btn");
-
-// this is the active input box
-let active_input_box = "";
-
-// throw id function
-function throw_id() {
-  let div = event.target.parentNode;
-
-  let div_id = div.id;
-
-  let input_box = "";
-
-  // if the div_id contains "input-box", then get its children
-  if (div_id.includes("input-row")) {
-    let spans = div.children;
-    input_box = spans[1].id;
-  } else {
-    input_box = div_id;
-  }
-
-  active_input_box = input_box;
-  return;
-}
-
-// add something to tthe math field in the active input box
-function add_to_math_field(value) {
-  // get the last number in the active_input_box
-  let lastnum = active_input_box.slice(-1);
-
-  // the mathfield is in the lastnum index-1 of the mathFields array
-  let mathField = mathFields[lastnum - 1];
-  mathField.write(value);
-}
 
 // clear active input box mathfield
 function clear_active_input_box() {

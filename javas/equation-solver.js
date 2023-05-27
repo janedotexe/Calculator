@@ -234,7 +234,7 @@ let generate_simul_form = () => {
                         <input type="text" placeholder="" class="input input-bordered p-0.5 input-sm w-12" id = "var-4-d4-value"/>\
                         <span class="text-sm variable">w</span>\
                         <span class="text-sm mx-2">=</span>\
-                        <input type="text" placeholder="" class="input input-bordered p-0.5 input-sm w-12" id = "k4-value"/>\
+                        <input type="text" placeholder="" class="input input-bordered p-0.5 input-sm w-12" id = "var-4-k4-value"/>\
                     </div>\
                 </div>';
 
@@ -262,7 +262,7 @@ let generate_simul_form = () => {
                             <span>\
                                 <span class="text-base variable">w</span>\
                                 <span class="text-base">=</span>\
-                                <span class="text-base" id = "w-ans">0</span>\
+                                <span class="text-base" id = "var-4-w-ans">0</span>\
                             </span>\
                         </div>\
                     </div>';
@@ -304,6 +304,236 @@ function toast_generator(message) {
 // first we need to know what the varible number is
 
 // on the press of the solve button we need to get the values of the variable number
+
+function solveSystemOfLinearEquations(coefficients) {
+  // Check if the input is an array of three equations
+  if (coefficients.length !== 3) {
+    throw new Error("Please provide an array of three equations.");
+  }
+
+  // Check if each equation has four coefficients
+  const isValid = coefficients.every((equation) => equation.length === 4);
+  if (!isValid) {
+    throw new Error("Each equation should have four coefficients.");
+  }
+
+  // Extract the coefficients and constants
+  const [a1, b1, c1, d1] = coefficients[0];
+  const [a2, b2, c2, d2] = coefficients[1];
+  const [a3, b3, c3, d3] = coefficients[2];
+
+  // Calculate the determinants
+  const determinant =
+    a1 * (b2 * c3 - b3 * c2) -
+    b1 * (a2 * c3 - a3 * c2) +
+    c1 * (a2 * b3 - a3 * b2);
+
+  if (determinant === 0) {
+    throw new Error("The system of equations has no unique solution.");
+  }
+
+  // Calculate the values of the variables
+  const x =
+    (d1 * (b2 * c3 - b3 * c2) -
+      b1 * (d2 * c3 - d3 * c2) +
+      c1 * (d2 * b3 - d3 * b2)) /
+    determinant;
+  const y =
+    (a1 * (d2 * c3 - d3 * c2) -
+      d1 * (a2 * c3 - a3 * c2) +
+      c1 * (a2 * d3 - a3 * d2)) /
+    determinant;
+  const z =
+    (a1 * (b2 * d3 - b3 * d2) -
+      b1 * (a2 * d3 - a3 * d2) +
+      d1 * (a2 * b3 - a3 * b2)) /
+    determinant;
+
+  return [x, y, z];
+}
+
+function solve_four_variables(coefficients) {
+  // Check if the input is an array of four equations
+  if (coefficients.length !== 4) {
+    throw new Error("Please provide an array of four equations.");
+  }
+
+  // Check if each equation has five coefficients
+  const isValid = coefficients.every((equation) => equation.length === 5);
+  if (!isValid) {
+    throw new Error("Each equation should have five coefficients.");
+  }
+
+  // Extract the coefficients and constants
+  const [a1, b1, c1, d1, e1] = coefficients[0];
+  const [a2, b2, c2, d2, e2] = coefficients[1];
+  const [a3, b3, c3, d3, e3] = coefficients[2];
+  const [a4, b4, c4, d4, e4] = coefficients[3];
+
+  // Calculate the determinants
+  const detA =
+    a1 *
+      (b2 * c3 * d4 +
+        b3 * c4 * d2 +
+        b4 * c2 * d3 -
+        b2 * c4 * d3 -
+        b3 * c2 * d4 -
+        b4 * c3 * d2) -
+    b1 *
+      (a2 * c3 * d4 +
+        a3 * c4 * d2 +
+        a4 * c2 * d3 -
+        a2 * c4 * d3 -
+        a3 * c2 * d4 -
+        a4 * c3 * d2) +
+    c1 *
+      (a2 * b3 * d4 +
+        a3 * b4 * d2 +
+        a4 * b2 * d3 -
+        a2 * b4 * d3 -
+        a3 * b2 * d4 -
+        a4 * b3 * d2) -
+    d1 *
+      (a2 * b3 * c4 +
+        a3 * b4 * c2 +
+        a4 * b2 * c3 -
+        a2 * b4 * c3 -
+        a3 * b2 * c4 -
+        a4 * b3 * c2);
+
+  const detX =
+    e1 *
+      (b2 * c3 * d4 +
+        b3 * c4 * d2 +
+        b4 * c2 * d3 -
+        b2 * c4 * d3 -
+        b3 * c2 * d4 -
+        b4 * c3 * d2) -
+    b1 *
+      (e2 * c3 * d4 +
+        e3 * c4 * d2 +
+        e4 * c2 * d3 -
+        e2 * c4 * d3 -
+        e3 * c2 * d4 -
+        e4 * c3 * d2) +
+    c1 *
+      (e2 * b3 * d4 +
+        e3 * b4 * d2 +
+        e4 * b2 * d3 -
+        e2 * b4 * d3 -
+        e3 * b2 * d4 -
+        e4 * b3 * d2) -
+    d1 *
+      (e2 * b3 * c4 +
+        e3 * b4 * c2 +
+        e4 * b2 * c3 -
+        e2 * b4 * c3 -
+        e3 * b2 * c4 -
+        e4 * b3 * c2);
+
+  const detY =
+    a1 *
+      (e2 * c3 * d4 +
+        e3 * c4 * d2 +
+        e4 * c2 * d3 -
+        e2 * c4 * d3 -
+        e3 * c2 * d4 -
+        e4 * c3 * d2) -
+    e1 *
+      (a2 * c3 * d4 +
+        a3 * c4 * d2 +
+        a4 * c2 * d3 -
+        a2 * c4 * d3 -
+        a3 * c2 * d4 -
+        a4 * c3 * d2) +
+    c1 *
+      (a2 * e3 * d4 +
+        a3 * e4 * d2 +
+        a4 * e2 * d3 -
+        a2 * e4 * d3 -
+        a3 * e2 * d4 -
+        a4 * e3 * d2) -
+    d1 *
+      (a2 * e3 * c4 +
+        a3 * e4 * c2 +
+        a4 * e2 * c3 -
+        a2 * e4 * c3 -
+        a3 * e2 * c4 -
+        a4 * e3 * c2);
+
+  const detZ =
+    a1 *
+      (b2 * e3 * d4 +
+        b3 * e4 * d2 +
+        b4 * e2 * d3 -
+        b2 * e4 * d3 -
+        b3 * e2 * d4 -
+        b4 * e3 * d2) -
+    b1 *
+      (a2 * e3 * d4 +
+        a3 * e4 * d2 +
+        a4 * e2 * d3 -
+        a2 * e4 * d3 -
+        a3 * e2 * d4 -
+        a4 * e3 * d2) +
+    e1 *
+      (a2 * b3 * d4 +
+        a3 * b4 * d2 +
+        a4 * b2 * d3 -
+        a2 * b4 * d3 -
+        a3 * b2 * d4 -
+        a4 * b3 * d2) -
+    d1 *
+      (a2 * b3 * e4 +
+        a3 * b4 * e2 +
+        a4 * b2 * e3 -
+        a2 * b4 * e3 -
+        a3 * b2 * e4 -
+        a4 * b3 * e2);
+
+  const detW =
+    a1 *
+      (b2 * c3 * e4 +
+        b3 * c4 * e2 +
+        b4 * c2 * e3 -
+        b2 * c4 * e3 -
+        b3 * c2 * e4 -
+        b4 * c3 * e2) -
+    b1 *
+      (a2 * c3 * e4 +
+        a3 * c4 * e2 +
+        a4 * c2 * e3 -
+        a2 * c4 * e3 -
+        a3 * c2 * e4 -
+        a4 * c3 * e2) +
+    c1 *
+      (a2 * b3 * e4 +
+        a3 * b4 * e2 +
+        a4 * b2 * e3 -
+        a2 * b4 * e3 -
+        a3 * b2 * e4 -
+        a4 * b3 * e2) -
+    e1 *
+      (a2 * b3 * c4 +
+        a3 * b4 * c2 +
+        a4 * b2 * c3 -
+        a2 * b4 * c3 -
+        a3 * b2 * c4 -
+        a4 * b3 * c2);
+
+  // Check if the system of equations has a unique solution
+  if (detA === 0) {
+    throw new Error("The system of equations has no unique solution.");
+  }
+
+  // Calculate the values of the variables
+  const x = detX / detA;
+  const y = detY / detA;
+  const z = detZ / detA;
+  const w = detW / detA;
+
+  return [x, y, z, w];
+}
 
 let simul_calc_btn = document.getElementById("simul-calc-btn");
 
@@ -441,54 +671,20 @@ simul_calc_btn.addEventListener("click", function () {
     }
 
     // calculate the answer
-    let x_ans =
-      (k1 * b2 * c3 +
-        k2 * b3 * c1 +
-        k3 * b1 * c2 -
-        k1 * b3 * c2 -
-        k2 * b1 * c3 -
-        k3 * b2 * c1) /
-      (a1 * b2 * c3 +
-        a2 * b3 * c1 +
-        a3 * b1 * c2 -
-        a1 * b3 * c2 -
-        a2 * b1 * c3 -
-        a3 * b2 * c1);
-    let y_ans =
-      (k1 * a3 * c2 +
-        k2 * a1 * c3 +
-        k3 * a2 * c1 -
-        k1 * a2 * c3 -
-        k2 * a3 * c1 -
-        k3 * a1 * c2) /
-      (a1 * b2 * c3 +
-        a2 * b3 * c1 +
-        a3 * b1 * c2 -
-        a1 * b3 * c2 -
-        a2 * b1 * c3 -
-        a3 * b2 * c1);
-    let z_ans =
-      (k1 * a2 * b3 +
-        k2 * a3 * b1 +
-        k3 * a1 * b2 -
-        k1 * a3 * b2 -
-        k2 * a1 * b3 -
-        k3 * a2 * b1) /
-      (a1 * b2 * c3 +
-        a2 * b3 * c1 +
-        a3 * b1 * c2 -
-        a1 * b3 * c2 -
-        a2 * b1 * c3 -
-        a3 * b2 * c1);
 
-    if (!number_validator(x_ans)) x.innerHTML = "NaN";
-    else x.innerHTML = x_ans.toFixed(2);
+    let coeff1 = [a1, b1, c1, k1];
+    let coeff2 = [a2, b2, c2, k2];
+    let coeff3 = [a3, b3, c3, k3];
+    let answers = solveSystemOfLinearEquations([coeff1, coeff2, coeff3]);
 
-    if (!number_validator(y_ans)) y.innerHTML = "NaN";
-    else y.innerHTML = y_ans.toFixed(2);
+    if (!number_validator(answers[0])) x.innerHTML = "NaN";
+    else x.innerHTML = answers[0].toFixed(2);
 
-    if (!number_validator(z_ans)) z.innerHTML = "NaN";
-    else z.innerHTML = z_ans.toFixed(2);
+    if (!number_validator(answers[1])) y.innerHTML = "NaN";
+    else y.innerHTML = answers[1].toFixed(2);
+
+    if (!number_validator(answers[2])) z.innerHTML = "NaN";
+    else z.innerHTML = answers[2].toFixed(2);
 
     return;
   }
@@ -563,6 +759,28 @@ simul_calc_btn.addEventListener("click", function () {
     }
 
     // calculate the answer
+    let coeff1 = [a1, b1, c1, d1, k1];
+    let coeff2 = [a2, b2, c2, d2, k2];
+    let coeff3 = [a3, b3, c3, d3, k3];
+    let coeff4 = [a4, b4, c4, d4, k4];
+
+    console.log(coeff1, coeff2, coeff3, coeff4);
+
+    let answers = solve_four_variables([coeff1, coeff2, coeff3, coeff4]);
+
+    if (!number_validator(answers[0])) x.innerHTML = "NaN";
+    else x.innerHTML = answers[0].toFixed(2);
+
+    if (!number_validator(answers[1])) y.innerHTML = "NaN";
+    else y.innerHTML = answers[1].toFixed(2);
+
+    if (!number_validator(answers[2])) z.innerHTML = "NaN";
+    else z.innerHTML = answers[2].toFixed(2);
+
+    if (!number_validator(answers[3])) w.innerHTML = "NaN";
+    else w.innerHTML = answers[3].toFixed(2);
+
+    return;
   }
 
   return;
@@ -926,15 +1144,47 @@ poly_solve_btn.addEventListener("click", function () {
     }
 
     // calculate the roots
-    //to solve string
-    let problem =
-      a + "*x^4 + " + b + "*x^3 + " + c + "*x^2 + " + d + "*x + " + e + " = 0";
-    console.log(problem);
-    let root = nerdamer.solve(problem, "x");
-    console.log(root);
+    let first_term = "";
+    let second_term = "";
+    let third_term = "";
+    let fourth_term = "";
+    let fifth_term = "";
 
-    // root is an array
-    root = root.toString();
+    if (a >= 0) first_term = "+" + a + "x^4";
+    else first_term = a + "x^4";
+
+    if (b >= 0) second_term = "+" + b + "x^3";
+    else second_term = b + "x^3";
+
+    if (c >= 0) third_term = "+" + c + "x^2";
+    else third_term = c + "x^2";
+
+    if (d >= 0) fourth_term = "+" + d + "x";
+    else fourth_term = d + "x";
+
+    if (e >= 0) fifth_term = "+" + e;
+    else fifth_term = e;
+
+    let problem =
+      first_term + second_term + third_term + fourth_term + fifth_term;
+    console.log(problem);
+
+    let solution = Algebrite.nroots(problem).toString();
+    console.log(solution);
+
+    // seperate the roots every comma
+    roots = solution.split(",");
+    roots[0] = roots[0].replace("[", "");
+    roots[roots.length - 1] = roots[roots.length - 1].replace("]", "");
+
+    console.log(roots);
+
+    // limit the strings: 5.00000000..... turns to 5.00
+    for (let i = 0; i < roots.length; i++) {
+      roots[i] = parseFloat(roots[i]).toFixed(2);
+    }
+
+    console.log(roots);
 
     // clear the previous answers
     let x1_box = document.querySelector("#deg-4-x1");
@@ -948,17 +1198,17 @@ poly_solve_btn.addEventListener("click", function () {
     x4_box.innerHTML = "";
 
     // display the answers
-    if (!number_validator(root[0])) x1_box.innerHTML = "NaN";
-    else x1_box.innerHTML = root[0];
+    if (!number_validator(roots[0])) x1_box.innerHTML = "NaN";
+    else x1_box.innerHTML = roots[0];
 
-    if (!number_validator(root[1])) x2_box.innerHTML = "NaN";
-    else x2_box.innerHTML = root[1];
+    if (!number_validator(roots[1])) x2_box.innerHTML = "NaN";
+    else x2_box.innerHTML = roots[1];
 
-    if (!number_validator(root[2])) x3_box.innerHTML = "NaN";
-    else x3_box.innerHTML = root[2];
+    if (!number_validator(roots[2])) x3_box.innerHTML = "NaN";
+    else x3_box.innerHTML = roots[2];
 
-    if (!number_validator(root[3])) x4_box.innerHTML = "NaN";
-    else x4_box.innerHTML = root[3];
+    if (!number_validator(roots[3])) x4_box.innerHTML = "NaN";
+    else x4_box.innerHTML = roots[3];
 
     return;
   }

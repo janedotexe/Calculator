@@ -661,6 +661,7 @@ ans_det_btn.addEventListener("click", function () {
 
   html = '<p class="text-lg font-medium"> | Ans | : ' + det + "</p>";
   ans_det_box.insertAdjacentHTML("beforeend", html);
+  return;
 });
 
 // display matrices based on arguments (arr, box_id)
