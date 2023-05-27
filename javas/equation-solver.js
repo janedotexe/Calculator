@@ -553,99 +553,16 @@ simul_calc_btn.addEventListener("click", function () {
       !number_validator(d4) ||
       !number_validator(k4)
     ) {
-      let toast = toast_generator("Please enter valid values");
+      let toast = toast_generator("Please enter valid numbers");
       document.body.innerHTML += toast;
 
-      // remove the toast after 3 seconds
-      setTimeout(() => {
-        document.querySelector(".toast").remove();
+      setTimeout(function () {
+        document.getElementById("toast-bottom-right").remove();
       }, 3000);
       return;
     }
 
     // calculate the answer
-    let x_ans =
-      (k1 * b2 * c3 * d4 +
-        k2 * b3 * c4 * d1 +
-        k3 * b4 * c1 * d2 +
-        k4 * b1 * c2 * d3 -
-        k1 * b3 * c2 * d4 -
-        k2 * b4 * c3 * d1 -
-        k3 * b1 * c4 * d2 -
-        k4 * b2 * c1 * d3) /
-      (a1 * b2 * c3 * d4 +
-        a2 * b3 * c4 * d1 +
-        a3 * b4 * c1 * d2 +
-        a4 * b1 * c2 * d3 -
-        a1 * b3 * c2 * d4 -
-        a2 * b4 * c3 * d1 -
-        a3 * b1 * c4 * d2 -
-        a4 * b2 * c1 * d3);
-    let y_ans =
-      (k1 * a2 * c3 * d4 +
-        k2 * a3 * c4 * d1 +
-        k3 * a4 * c1 * d2 +
-        k4 * a1 * c2 * d3 -
-        k1 * a3 * c2 * d4 -
-        k2 * a4 * c3 * d1 -
-        k3 * a1 * c4 * d2 -
-        k4 * a2 * c1 * d3) /
-      (a1 * b2 * c3 * d4 +
-        a2 * b3 * c4 * d1 +
-        a3 * b4 * c1 * d2 +
-        a4 * b1 * c2 * d3 -
-        a1 * b3 * c2 * d4 -
-        a2 * b4 * c3 * d1 -
-        a3 * b1 * c4 * d2 -
-        a4 * b2 * c1 * d3);
-    let z_ans =
-      (k1 * a2 * b3 * d4 +
-        k2 * a3 * b4 * d1 +
-        k3 * a4 * b1 * d2 +
-        k4 * a1 * b2 * d3 -
-        k1 * a3 * b2 * d4 -
-        k2 * a4 * b3 * d1 -
-        k3 * a1 * b4 * d2 -
-        k4 * a2 * b1 * d3) /
-      (a1 * b2 * c3 * d4 +
-        a2 * b3 * c4 * d1 +
-        a3 * b4 * c1 * d2 +
-        a4 * b1 * c2 * d3 -
-        a1 * b3 * c2 * d4 -
-        a2 * b4 * c3 * d1 -
-        a3 * b1 * c4 * d2 -
-        a4 * b2 * c1 * d3);
-    let w_ans =
-      (k1 * a2 * b3 * c4 +
-        k2 * a3 * b4 * c1 +
-        k3 * a4 * b1 * c2 +
-        k4 * a1 * b2 * c3 -
-        k1 * a3 * b2 * c4 -
-        k2 * a4 * b3 * c1 -
-        k3 * a1 * b4 * c2 -
-        k4 * a2 * b1 * c3) /
-      (a1 * b2 * c3 * d4 +
-        a2 * b3 * c4 * d1 +
-        a3 * b4 * c1 * d2 +
-        a4 * b1 * c2 * d3 -
-        a1 * b3 * c2 * d4 -
-        a2 * b4 * c3 * d1 -
-        a3 * b1 * c4 * d2 -
-        a4 * b2 * c1 * d3);
-
-    if (!number_validator(x_ans)) x.innerHTML = "NaN";
-    else x.innerHTML = x_ans.toFixed(2);
-
-    if (!number_validator(y_ans)) y.innerHTML = "NaN";
-    else y.innerHTML = y_ans.toFixed(2);
-
-    if (!number_validator(z_ans)) z.innerHTML = "NaN";
-    else z.innerHTML = z_ans.toFixed(2);
-
-    if (!number_validator(w_ans)) w.innerHTML = "NaN";
-    else w.innerHTML = w_ans.toFixed(2);
-
-    return;
   }
 
   return;
@@ -1012,6 +929,7 @@ poly_solve_btn.addEventListener("click", function () {
     //to solve string
     let problem =
       a + "*x^4 + " + b + "*x^3 + " + c + "*x^2 + " + d + "*x + " + e + " = 0";
+    console.log(problem);
     let root = nerdamer.solve(problem, "x");
     console.log(root);
 

@@ -638,6 +638,21 @@ ans_det_btn.addEventListener("click", function () {
   // get the matrix
   let ans = matrix_to_array("answer-generated-matrix");
 
+  // check if the matrix is square
+  if (!square_matrix_checker(ans)) {
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      toast_generator("The matrix must be a square matrix!")
+    );
+
+    // remove the toast after 3 seconds
+    setTimeout(function () {
+      document.getElementById("toast-bottom-right").remove();
+    }, 3000);
+
+    return;
+  }
+
   // no need to validate the matrix
 
   let det = determinant(ans);
